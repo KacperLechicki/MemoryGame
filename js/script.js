@@ -3,15 +3,17 @@
 const cards = document.querySelectorAll('.card');
 
 let cardOne, cardTwo;
+let disabled = false;
 
 const flipCard = (e) => {
 	let clickedCard = e.target;
 	clickedCard.classList.add('flip');
 
-	if (!cardOne) {
+	if (!cardOne && !disabled) {
 		return (cardOne = clickedCard);
 	}
 	cardTwo = clickedCard;
+    disabled = true;
 
 	let cardOneImg = cardOne.querySelector('img').src,
 		cardTwoImg = cardTwo.querySelector('img').src;
@@ -21,9 +23,11 @@ const flipCard = (e) => {
 
 const matchingCards = (cardOneImg, cardTwoImg) => {
 	if (cardOneImg === cardTwoImg) {
-		return console.log('ok');
+		cardOne.removeEventListener('click', flipCard);
+		cardTwo.removeEventListener('click', flipCard);
+		cardOne = cardTwo = '';
+		return disabled = true;
 	}
-	console.log('nie ok');
 
 	setTimeout(() => {
 		cardOne.classList.add('shake');
@@ -33,7 +37,9 @@ const matchingCards = (cardOneImg, cardTwoImg) => {
 	setTimeout(() => {
 		cardOne.classList.remove('flip');
 		cardTwo.classList.remove('flip');
-	}, 900);
+		cardOne = cardTwo = '';
+        disabled = false;
+	}, 1000);
 };
 
 cards.forEach((card) => {
