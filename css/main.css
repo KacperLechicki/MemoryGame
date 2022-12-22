@@ -11,9 +11,12 @@ html {
 :root {
   --black: black;
   --white: whitesmoke;
+  --backgroundGradient: linear-gradient(70deg, #A7ACD9, #9E8FB2);
 }
 
 body {
+  min-height: 100vh;
   font-family: "Open Sans", sans-serif;
   font-size: 1.6rem;
+  background-image: var(--backgroundGradient);
 }/*# sourceMappingURL=main.css.map */
