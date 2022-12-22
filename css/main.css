@@ -67,6 +67,11 @@ body {
   border-radius: 5px;
   overflow: hidden;
   transition: transform 0.25s linear;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  pointer-events: none;
 }
 .wrapper .cards .card .back-view {
   transform: rotateY(-180deg);
@@ -78,9 +83,9 @@ body {
   font-size: 3.5rem;
   color: var(--question);
 }
-.wrapper .cards .card:hover .back-view {
+.wrapper .cards .card.flip .back-view {
   transform: rotateY(0);
 }
-.wrapper .cards .card:hover .front-view {
+.wrapper .cards .card.flip .front-view {
   transform: rotateY(180deg);
 }/*# sourceMappingURL=main.css.map */
