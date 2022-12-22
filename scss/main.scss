@@ -110,3 +110,20 @@ body {
 		}
 	}
 }
+
+@media only screen and (min-width: 300px) and (max-width: 430px) {
+	.wrapper {
+		height: 300px;
+		width: 300px;
+
+		.cards {
+			.card {
+				.back-view {
+					img {
+						max-width: 30px;
+					}
+				}
+			}
+		}
+	}
+}

@@ -126,4 +126,14 @@ body {
   80% {
     transform: translateX(8px);
   }
+}
+
+@media only screen and (min-width: 300px) and (max-width: 430px) {
+  .wrapper {
+    height: 300px;
+    width: 300px;
+  }
+  .wrapper .cards .card .back-view img {
+    max-width: 30px;
+  }
 }/*# sourceMappingURL=main.css.map */
