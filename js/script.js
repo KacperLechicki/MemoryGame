@@ -23,7 +23,17 @@ const matchingCards = (cardOneImg, cardTwoImg) => {
 	if (cardOneImg === cardTwoImg) {
 		return console.log('ok');
 	}
-	return console.log('nie ok');
+	console.log('nie ok');
+
+	setTimeout(() => {
+		cardOne.classList.add('shake');
+		cardTwo.classList.add('shake');
+	}, 400);
+
+	setTimeout(() => {
+		cardOne.classList.remove('flip');
+		cardTwo.classList.remove('flip');
+	}, 900);
 };
 
 cards.forEach((card) => {
