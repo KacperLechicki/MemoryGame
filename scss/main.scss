@@ -1,60 +1,84 @@
-@use "reset" as *;
-@use "colors" as *;
+@use 'reset' as *;
+@use 'colors' as *;
 
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    font-family: "Open Sans", sans-serif;
-    font-size: 1.6rem;
-    background-image: var(--backgroundGradient);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	font-family: 'Open Sans', sans-serif;
+	font-size: 1.6rem;
+	background-image: var(--backgroundGradient);
 }
 
 .wrapper {
-    padding: 25px;
-    height: 400px;
-    width: 400px;
-    background-color: var(--white);
-    border-radius: 10px;
+	padding: 25px;
+	height: 400px;
+	width: 400px;
+	background-color: var(--white);
+	border-radius: 10px;
 
-    .cards {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        height: 100%;
-        width: 100%;
+	.cards {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		height: 100%;
+		width: 100%;
 
-        .card {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-wrap: wrap;
-            height: calc(100% / 4 - 10px);
-            width: calc(100% / 4 - 10px);
-            cursor: pointer;
+		.card {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-wrap: wrap;
+			position: relative;
+			perspective: 800px;
+			transform-style: preserve-3d;
+			height: calc(100% / 4 - 10px);
+			width: calc(100% / 4 - 10px);
+			cursor: pointer;
+			
+			
+			.view {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex-wrap: wrap;
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				backface-visibility: hidden;
+				box-shadow: 0 2px 8px rgba(0, 0, 0, 0.184);
+				border-radius: 5px;
+				overflow: hidden;
+				transition: transform 0.25s linear;
+			}
+			
+			.back-view {
+				transform: rotateY(-180deg);
+				
+				img {
+					max-width: 45px;
+				}
+			}
+			
+			.front-view {
+				.material-icons {
+					font-size: 3.5rem;
+					color: var(--question);
+				}
+			}
 
-            .view {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                flex-wrap: wrap;
-                width: 100%;
-                height: 100%;
-                background: red;
-            }
+			&:hover {
+				.back-view {
+					transform: rotateY(0);
+				}
 
-            .front-view {
-                display: none;
-            }
-
-            .back-view {
-                img {
-                    max-width: 45px;
-                }
-            }
-        }
-    }
+				.front-view {
+					transform: rotateY(180deg);
+				}
+			}
+		}
+	}
 }
